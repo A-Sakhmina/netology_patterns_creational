@@ -83,6 +83,7 @@ public class Person {
         private int age;
         private String address;
 
+
         public PersonBuilder setName(String name) {
             this.name = name;
             return this;
@@ -94,7 +95,7 @@ public class Person {
         }
 
         public PersonBuilder setAge(int age) {
-            if (age < 0) throw new IllegalArgumentException();
+            if (age < 0) throw new IllegalArgumentException("некорректный возраст");
             else this.age = age;
             return this;
         }
@@ -105,6 +106,8 @@ public class Person {
         }
 
         public Person build() {
+            if (name == null) throw new IllegalStateException("не указано имя");
+            if (surname == null) throw new IllegalStateException("не указана фамилия");
             return new Person(name, surname, age);
         }
     }
