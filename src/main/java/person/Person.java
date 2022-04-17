@@ -70,17 +70,43 @@ public class Person {
 
     // метод для получения полузаполненного билдера для ребёнка
     //с уже заполненными фамилией (родительской), возрастом и текущим городом жительства (родительским)
-    public PersonBuilder newChildBuilder() { /*...*/ }
+    public PersonBuilder newChildBuilder() {
+        return new PersonBuilder()
+                .setSurname(surname)
+                .setAge(age)
+                .setAddress(address);
+    }
 
     public static class PersonBuilder {
-        //...
+        private String name;
+        private String surname;
+        private int age;
+        private String address;
 
-        public PersonBuilder setName(String name) { /*...*/ }
-        public PersonBuilder setSurname(String surname) { /*...*/ }
-        public PersonBuilder setAge(int age) { /*...*/ }
-        public PersonBuilder setAddress(String address) { /*...*/ }
+        public PersonBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
 
-        public Person build() { /*...*/ }
+        public PersonBuilder setSurname(String surname) {
+            this.surname = surname;
+            return this;
+        }
+
+        public PersonBuilder setAge(int age) {
+            if (age < 0) throw new IllegalArgumentException();
+            else this.age = age;
+            return this;
+        }
+
+        public PersonBuilder setAddress(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(name, surname, age);
+        }
     }
 
 }

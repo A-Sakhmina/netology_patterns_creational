@@ -17,7 +17,7 @@ public class Main {
         System.out.println("У " + mom + " есть сын, " + son);
 
         try {
-            // Не хватает обяхательных полей
+            // Не хватает обязательных полей
             new PersonBuilder().build();
         } catch (IllegalStateException e) {
             e.printStackTrace();
