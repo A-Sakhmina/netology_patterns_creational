@@ -69,6 +69,18 @@ public class Person {
     }
 
     // метод для получения полузаполненного билдера для ребёнка
+    //с уже заполненными фамилией (родительской), возрастом и текущим городом жительства (родительским)
     public PersonBuilder newChildBuilder() { /*...*/ }
+
+    public static class PersonBuilder {
+        //...
+
+        public PersonBuilder setName(String name) { /*...*/ }
+        public PersonBuilder setSurname(String surname) { /*...*/ }
+        public PersonBuilder setAge(int age) { /*...*/ }
+        public PersonBuilder setAddress(String address) { /*...*/ }
+
+        public Person build() { /*...*/ }
+    }
 
 }
