@@ -1,6 +1,5 @@
 package person;
 
-import java.util.Objects;
 import java.util.OptionalInt;
 
 public class Person {
@@ -63,14 +62,11 @@ public class Person {
                 '}';
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname);
-    }
 
     // метод для получения полузаполненного билдера для ребёнка
     //с уже заполненными фамилией (родительской), возрастом и текущим городом жительства (родительским)
     public PersonBuilder newChildBuilder() {
+        int age = 1;
         return new PersonBuilder()
                 .setSurname(surname)
                 .setAge(age)
